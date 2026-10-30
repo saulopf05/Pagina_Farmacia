@@ -1,0 +1,16 @@
+{
+  "name": "site-prof-claudiney-ferreira",
+  "private": true,
+  "packageManager": "npm@10",
+  "workspaces": [
+    "packages/web"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=prof-claudiney-site",
+    "build": "npm run build --workspace=prof-claudiney-site",
+    "preview": "npm run preview --workspace=prof-claudiney-site",
+    "typecheck": "npm run typecheck --workspace=prof-claudiney-site"
+  },
+  "devDependencies": {},
+  "dependencies": {}
+}
