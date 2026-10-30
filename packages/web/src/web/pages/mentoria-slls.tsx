@@ -5,10 +5,10 @@ import { Faq } from "../components/faq";
 import { CourseIntroduction } from "../components/course-introduction";
 import { SiteFooter } from "../components/site-footer";
 import { SiteHeader } from "../components/site-header";
-import { Reveal, ScrollProgress } from "../components/ui/motion-primitives";
+import { Reveal, ScrollProgress, SpotlightCard } from "../components/ui/motion-primitives";
 import { MENTORSHIP_CHECKOUT_URL, getMentorshipCheckoutUrl } from "../lib/mentorship-config";
 
-const route = "/mentoria-santa-luzia-lagoa-santa.html";
+const route = "/mentoria-slls";
 const navLinks = [
   { label: "A Mentoria", href: `${route}#proposta` },
   { label: "Conteúdo", href: `${route}#conteudo` },
@@ -81,7 +81,7 @@ export default function MentorshipSantaLuziaLagoaSanta() {
   return (
     <div className="min-h-screen overflow-x-hidden bg-[#070a0f] font-sans text-white">
       <ScrollProgress />
-      <SiteHeader navLinks={navLinks} homeHref="/" primaryHref="#investimento" primaryLabel="Ver investimento" />
+      <SiteHeader navLinks={navLinks} homeHref="/" primaryHref="#investimento" primaryLabel="Garantir vaga" />
 
       <main>
         <section id="topo" className="noise relative overflow-hidden pb-20 pt-32 sm:pb-28 sm:pt-40">
@@ -129,6 +129,7 @@ export default function MentorshipSantaLuziaLagoaSanta() {
           description="A mentoria organiza os conteúdos que podem ser estudados em comum e reserva atenção específica às particularidades de Santa Luzia e Lagoa Santa. O planejamento conecta as disciplinas e ajuda a orientar a rotina de preparação com foco em cada edital."
           points={["Aproveitamento dos conteúdos comuns", "Organização estratégica das disciplinas", "Foco nas particularidades de cada edital"]}
           texture="grid"
+          backgroundImage="/images/livros-mentoria.png"
         />
 
         <section className="relative py-20 sm:py-28">
@@ -165,7 +166,7 @@ export default function MentorshipSantaLuziaLagoaSanta() {
         <section className="bg-[#0b111a] py-20 sm:py-28">
           <div className="mx-auto grid max-w-6xl gap-12 px-5 sm:px-6 lg:grid-cols-[0.85fr_1.15fr]">
             <Reveal><p className="eyebrow">O que está incluído</p><h2 className="font-display mt-4 text-[clamp(2rem,4.5vw,3.2rem)] leading-[1.04] font-bold">Materiais para acompanhar cada etapa.</h2><p className="mt-5 text-sm leading-[1.8] text-white/50">A mentoria reúne aulas, materiais de apoio, prática e orientação em grupo.</p></Reveal>
-            <Reveal delay={0.1}><ul className="grid gap-x-8 sm:grid-cols-2">{included.map((item) => <li key={item} className="flex items-start gap-3 border-t border-white/[0.08] py-4 text-[13.5px] leading-relaxed text-white/70"><span className="bg-primary/10 text-primary mt-0.5 grid size-5 shrink-0 place-items-center rounded-full"><Check className="size-3" /></span>{item}</li>)}</ul></Reveal>
+            <Reveal delay={0.1}><ul className="grid gap-2 sm:grid-cols-2">{included.map((item, index) => <motion.li key={item} whileHover={reduce ? undefined : { x: 5 }} transition={{ duration: 0.2 }} className="group flex items-start gap-3 rounded-xl border border-transparent px-3 py-4 text-[13.5px] leading-relaxed text-white/70 transition-colors hover:border-primary/20 hover:bg-primary/[0.035] hover:text-white"><span className="bg-primary/10 text-primary mt-0.5 grid size-6 shrink-0 place-items-center rounded-full transition-all duration-300 group-hover:scale-110 group-hover:bg-primary/20"><Check className="size-3.5 transition-transform duration-300 group-hover:scale-110" /></span><span><span className="mr-2 font-display text-[10px] font-semibold tracking-[0.14em] text-primary/55">0{index + 1}</span>{item}</span></motion.li>)}</ul></Reveal>
           </div>
           <div className="mx-auto mt-10 max-w-6xl px-5 sm:px-6"><Reveal><div className="flex flex-col items-start gap-6 rounded-3xl border border-primary/20 bg-primary/[0.05] p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8"><div><p className="eyebrow">Bônus da mentoria</p><h3 className="font-display mt-2 text-xl font-semibold">Mais oportunidades de praticar com orientação.</h3><p className="mt-2 max-w-2xl text-[13.5px] leading-relaxed text-white/55">Aulas ao vivo de resolução de exercícios e simulados estratégicos com gabarito comentado.</p></div><span className="border-primary/25 text-primary inline-flex shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-xs font-medium"><GraduationCap className="size-4" /> Bônus incluídos</span></div></Reveal></div>
           <div className="mx-auto max-w-6xl px-5 sm:px-6"><Reveal delay={0.1}><EnrollmentLink className="mt-8 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground transition hover:-translate-y-0.5 aria-disabled:opacity-60">Quero garantir minha vaga <ArrowRight className="size-4" /></EnrollmentLink></Reveal></div>
@@ -175,7 +176,7 @@ export default function MentorshipSantaLuziaLagoaSanta() {
 
         <section id="investimento" className="relative overflow-hidden bg-[#0b111a] py-20 sm:py-28">
           <div className="absolute inset-0 bg-[radial-gradient(60%_75%_at_50%_50%,rgba(47,227,196,0.11),transparent_70%)]" />
-          <div className="relative mx-auto max-w-6xl px-5 sm:px-6"><Reveal><div className="mx-auto max-w-3xl overflow-hidden rounded-[2rem] border border-primary/20 bg-[#101a24]/85 p-7 text-center shadow-[0_30px_100px_-55px_rgba(47,227,196,0.45)] sm:p-10 lg:p-14"><p className="eyebrow">Investimento</p><h2 className="font-display mt-4 text-[clamp(2rem,4.5vw,3.3rem)] leading-tight font-bold">Uma preparação para dois concursos.</h2><p className="mt-6 text-sm text-white/50">Acesso à mentoria, aulas, materiais, questões, simulados e suporte em grupo.</p><p className="font-display mt-7 text-5xl font-bold tracking-tight text-white sm:text-6xl">R$ 360,00</p><EnrollmentLink className="group mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-7 py-4 text-sm font-semibold text-primary-foreground transition hover:-translate-y-0.5 hover:shadow-xl sm:w-auto sm:min-w-72 aria-disabled:opacity-60">QUERO GARANTIR MINHA VAGA <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" /></EnrollmentLink>{!checkoutConfigured && <p className="mt-4 text-xs text-accent-warm/80">O botão será conectado ao checkout oficial após o recebimento do link da Hotmart.</p>}<p className="mt-4 text-xs leading-relaxed text-white/35">Condições de pagamento e detalhes da oferta serão apresentados no checkout oficial.</p></div></Reveal></div>
+          <div className="relative mx-auto max-w-6xl px-5 sm:px-6"><Reveal><SpotlightCard className="mx-auto max-w-3xl rounded-[2rem]" tilt={4}><div className="relative mx-auto overflow-hidden rounded-[2rem] border border-primary/20 bg-[#101a24]/85 p-7 text-center shadow-[0_30px_100px_-55px_rgba(47,227,196,0.45)] sm:p-10 lg:p-14"><p className="eyebrow">Investimento</p><h2 className="font-display mt-4 text-[clamp(2rem,4.5vw,3.3rem)] leading-tight font-bold">Uma preparação para dois concursos.</h2><p className="mt-6 text-sm text-white/50">Acesso à mentoria, aulas, materiais, questões, simulados e suporte em grupo.</p><p className="font-display mt-7 text-5xl font-bold tracking-tight text-white sm:text-6xl">R$ 360,00</p><EnrollmentLink className="group mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-7 py-4 text-sm font-semibold text-primary-foreground transition hover:-translate-y-0.5 hover:shadow-xl sm:w-auto sm:min-w-72 aria-disabled:opacity-60">QUERO GARANTIR MINHA VAGA <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" /></EnrollmentLink>{!checkoutConfigured && <p className="mt-4 text-xs text-accent-warm/80">O botão será conectado ao checkout oficial após o recebimento do link da Hotmart.</p>}<p className="mt-4 text-xs leading-relaxed text-white/35">Condições de pagamento e detalhes da oferta serão apresentados no checkout oficial.</p></div></SpotlightCard></Reveal></div>
         </section>
 
         <Faq id="duvidas" items={faqItems} />

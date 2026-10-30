@@ -1,0 +1,9 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^farmacologia-no-esporte\.html$ /farmacologia-no-esporte/ [R=301,L]
+  RewriteRule ^portaria-344-98\.html$ /portaria-344 [R=301,L]
+  RewriteRule ^mentoria-santa-luzia-lagoa-santa\.html$ /mentoria-slls [R=301,L]
+  RewriteRule ^farmacologia-no-esporte/?$ farmacologia-no-esporte/index.html [L]
+  RewriteRule ^portaria-344/?$ portaria-344/index.html [L]
+  RewriteRule ^mentoria-slls/?$ mentoria-slls/index.html [L]
+</IfModule>

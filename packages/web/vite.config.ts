@@ -20,9 +20,9 @@ export default defineConfig({
       rollupOptions: {
         input: {
           main: resolve(webDir, "index.html"),
-          farmacologiaEsporte: resolve(webDir, "farmacologia-no-esporte.html"),
-          portaria344: resolve(webDir, "portaria-344-98.html"),
-          mentoriaSantaLuziaLagoaSanta: resolve(webDir, "mentoria-santa-luzia-lagoa-santa.html"),
+          farmacologiaEsporte: resolve(webDir, "farmacologia-no-esporte/index.html"),
+          portaria344: resolve(webDir, "portaria-344/index.html"),
+          mentoriaSlls: resolve(webDir, "mentoria-slls/index.html"),
         },
       },
     },

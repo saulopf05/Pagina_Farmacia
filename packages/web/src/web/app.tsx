@@ -1,16 +1,18 @@
 import Index from "./pages/index";
-import PharmacologySport from "./pages/pharmacology-sport";
-import Ordinance344 from "./pages/ordinance-344";
-import MentorshipSantaLuziaLagoaSanta from "./pages/mentorship-santa-luzia-lagoa-santa";
+import PharmacologySport from "./pages/farmacologia-no-esporte";
+import Ordinance344 from "./pages/portaria-344";
+import MentorshipSantaLuziaLagoaSanta from "./pages/mentoria-slls";
 
 export default function App() {
-  if (window.location.pathname.endsWith("/farmacologia-no-esporte.html")) {
+  const path = window.location.pathname.replace(/\/+$/, "");
+
+  if (path === "/farmacologia-no-esporte") {
     return <PharmacologySport />;
   }
-  if (window.location.pathname.endsWith("/portaria-344-98.html")) {
+  if (path === "/portaria-344") {
     return <Ordinance344 />;
   }
-  if (window.location.pathname.endsWith("/mentoria-santa-luzia-lagoa-santa.html")) {
+  if (path === "/mentoria-slls") {
     return <MentorshipSantaLuziaLagoaSanta />;
   }
 

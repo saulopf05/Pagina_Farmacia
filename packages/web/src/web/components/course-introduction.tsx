@@ -9,6 +9,7 @@ type CourseIntroductionProps = {
   description: string;
   points: string[];
   texture?: "grid" | "dots";
+  backgroundImage?: string;
 };
 
 export function CourseIntroduction({
@@ -18,6 +19,7 @@ export function CourseIntroduction({
   description,
   points,
   texture = "grid",
+  backgroundImage = "/images/anatomia-muscular.jpg",
 }: CourseIntroductionProps) {
   const reduce = useReducedMotion();
 
@@ -25,7 +27,7 @@ export function CourseIntroduction({
     <section id={id} className="relative isolate overflow-hidden border-y border-white/[0.06] bg-[#0b111a] py-24 sm:py-28 lg:py-32">
       <div className={`absolute inset-0 ${texture === "grid" ? "bg-grid" : "bg-dots"} opacity-35`} />
       <div className="absolute inset-0 bg-[radial-gradient(60%_70%_at_15%_35%,rgba(47,227,196,0.08),transparent_70%)]" />
-      <img src="/images/anatomia-muscular.jpg" alt="" aria-hidden="true" className="pointer-events-none absolute -right-32 bottom-0 w-[44rem] max-w-none opacity-[0.045] mix-blend-screen select-none" />
+      <img src={backgroundImage} alt="" aria-hidden="true" className="pointer-events-none absolute -right-32 bottom-0 w-[44rem] max-w-none opacity-[0.045] mix-blend-screen select-none" />
       <div className="relative mx-auto max-w-6xl px-5 sm:px-6">
         <Reveal>
           <p className="eyebrow">{eyebrow}</p>

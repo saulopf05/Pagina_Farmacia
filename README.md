@@ -22,7 +22,7 @@ npm run build      # gera a versão de produção
 npm run preview    # prévia local da versão gerada
 ```
 
-O site é compilado em `packages/web/dist`. As páginas incluem a inicial, `/farmacologia-no-esporte.html` e `/portaria-344-98.html`.
+O site é compilado em `packages/web/dist`. As páginas incluem a inicial, `/farmacologia-no-esporte/`, `/portaria-344` e `/mentoria-slls`.
 
 ## Estrutura
 
@@ -33,4 +33,4 @@ O site é compilado em `packages/web/dist`. As páginas incluem a inicial, `/far
 
 ## Publicação
 
-Para publicar em hospedagem estática, gere a versão de produção com `npm run build` e envie o conteúdo de `packages/web/dist` para a hospedagem. Não é necessário enviar `node_modules`.
+Para publicar na HostGator, gere a versão de produção com `npm run build` e envie todo o conteúdo de `packages/web/dist` para a raiz do domínio. O arquivo `.htaccess` incluído no build configura as URLs das páginas de curso. Não é necessário enviar `node_modules`.

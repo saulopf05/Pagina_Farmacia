@@ -72,30 +72,14 @@ export function SiteFooter({ coursePage = false }: { coursePage?: boolean }) {
               {COURSES.map((c) => (
                 <li key={c.slug}>                  
                   <a
-                    href={
-                      c.slug === "farmacologia-no-esporte"
-                        ? "/farmacologia-no-esporte.html"
-                        : c.slug === "portaria-344-98"
-                          ? "/portaria-344-98.html"
-                          : coursePage
-                            ? "/#cursos"
-                            : "#cursos"
-                    }
+                    href={c.footerUrl ?? c.infoUrl ?? (coursePage ? "/#cursos" : "#cursos")}
                     className="text-[13.5px] text-white/45 transition-colors hover:text-white"
                   >
 
-                  {c.title}
+                  {c.footerLabel ?? c.title}
                   </a>
                 </li>
               ))}
-              <li>
-                <a
-                  href="/mentoria-santa-luzia-lagoa-santa.html"
-                  className="text-[13.5px] text-white/45 transition-colors hover:text-white"
-                >
-                  Mentoria SL e LS
-                </a>
-              </li>
             </ul>
           </Reveal>
 
@@ -129,14 +113,29 @@ export function SiteFooter({ coursePage = false }: { coursePage?: boolean }) {
         </div>
 
         <div className="mt-14 flex flex-col gap-4 border-t border-white/[0.07] pt-7 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-[11.5px] text-white/30">
-            © {new Date().getFullYear()} Prof. Claudiney Ferreira. Todos os direitos reservados.
-          </p>
+          <div className="flex flex-col gap-2">
+            <p className="text-[11.5px] text-white/30">
+              © {new Date().getFullYear()} Prof. Claudiney Ferreira. Todos os direitos reservados.
+            </p>
+
+            <p className="text-[11px] text-white/25">
+              Desenvolvido por{" "}
+              <a
+                href="https://www.linkedin.com/in/saulo-ferreira-831958382/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/40 transition-colors hover:text-white/80">
+                Saulo Ferreira
+              </a>
+            </p>
+          </div>
+
           <p className="max-w-md text-[11px] leading-relaxed text-white/25">
             Conteúdo educacional. Os cursos não substituem avaliação clínica individual nem
             constituem prescrição ou parecer jurídico.
           </p>
         </div>
+
       </div>
     </footer>
   );

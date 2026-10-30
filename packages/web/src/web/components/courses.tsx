@@ -30,57 +30,9 @@ export function Courses() {
           {COURSES.map((course, i) => (
             <CourseCard key={course.slug} course={course} index={i} />
           ))}
-          <MentorshipCard />
         </div>
       </div>
     </section>
-  );
-}
-
-function MentorshipCard() {
-  const highlights = [
-    "Preparação integrada para Santa Luzia e Lagoa Santa",
-    "Farmácia, Saúde Pública e disciplinas gerais",
-    "Questões, simulados e suporte em grupo",
-  ];
-
-  return (
-    <Reveal delay={0.1}>
-      <SpotlightCard className="h-full rounded-3xl" tilt={4}>
-        <article className="card-surface relative flex h-full flex-col overflow-hidden rounded-3xl transition-all duration-500 hover:border-primary/30 hover:shadow-[0_30px_80px_-40px_rgba(47,227,196,0.5)]">
-          <div className="relative overflow-hidden">
-            <img src="/images/claudiney-retrato.jpg" alt="Mentoria preparatória para farmacêuticos" loading="lazy" className="h-52 w-full object-cover object-[center_30%] transition-transform duration-[900ms] ease-out group-hover:scale-[1.07]" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0d1520] via-[#0d1520]/25 to-transparent" />
-            <span className="border-primary/30 bg-[#070a0f]/80 text-primary absolute top-4 left-4 rounded-full border px-3 py-1 text-[10.5px] font-medium tracking-[0.14em] uppercase backdrop-blur-md">Mentoria</span>
-          </div>
-
-          <div className="relative flex flex-1 flex-col p-6 sm:p-7">
-            <h3 className="font-display text-[1.35rem] leading-tight font-bold text-white sm:text-[1.55rem]">Mentoria Preparatória para Farmacêuticos</h3>
-            <p className="mt-2 flex items-start gap-1.5 text-[12px] leading-relaxed text-white/40"><Users className="mt-0.5 size-3.5 shrink-0" /> Farmacêuticos que se preparam para os concursos de Santa Luzia e Lagoa Santa</p>
-            <p className="mt-4 text-[14px] leading-[1.72] text-white/55">Organize a preparação para os dois concursos com conteúdos comuns e foco nas particularidades de cada edital.</p>
-
-            <ul className="mt-5 space-y-2">
-              {highlights.map((highlight) => <li key={highlight} className="flex items-start gap-2.5 text-[13px] text-white/65"><span className="bg-primary/12 mt-0.5 grid size-4 shrink-0 place-items-center rounded-full"><Check className="text-primary size-2.5" strokeWidth={3.5} /></span>{highlight}</li>)}
-            </ul>
-
-            <div className="mt-auto mb-5 flex items-center gap-5 border-t border-white/[0.07] pt-5 text-[12px] text-white/45">
-              <span className="inline-flex items-center gap-1.5"><MapPin className="size-3.5" /> 2 concursos</span>
-              <span className="inline-flex items-center gap-1.5"><BookOpen className="size-3.5" /> 9 módulos</span>
-              <span className="ml-auto text-white/30">Suporte em grupo</span>
-            </div>
-
-            <div className="grid gap-3 sm:grid-cols-2">
-              <a href="/mentoria-santa-luzia-lagoa-santa.html" className="flex w-full items-center justify-center gap-2 rounded-full border border-white/15 px-5 py-3.5 text-[13.5px] font-semibold text-white/80 transition-all hover:border-primary/40 hover:bg-white/[0.04]">
-                Conhecer a mentoria <ArrowUpRight className="size-4" />
-              </a>
-              <a href="/mentoria-santa-luzia-lagoa-santa.html#investimento" className="group/btn bg-primary text-primary-foreground hover:shadow-primary/30 flex w-full items-center justify-center gap-2 rounded-full px-6 py-3.5 text-[13.5px] font-semibold transition-all hover:-translate-y-0.5 hover:shadow-xl">
-                Quero me inscrever <ArrowUpRight className="size-4 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
-              </a>
-            </div>
-          </div>
-        </article>
-      </SpotlightCard>
-    </Reveal>
   );
 }
 
@@ -179,6 +131,13 @@ function CourseCard({ course, index }: { course: Course; index: number }) {
                     </div>
                   </div>
                 </div>
+              ) : course.cardDetails ? (
+                <div className="mb-5 flex items-center gap-5 border-t border-white/[0.07] pt-5 text-[12px] text-white/45">
+                  {course.cardDetails.map((detail) => {
+                    const DetailIcon = detail.icon === "map" ? MapPin : detail.icon === "book" ? BookOpen : Users;
+                    return <span key={detail.label} className="inline-flex items-center gap-1.5"><DetailIcon className="size-3.5" /> {detail.label}</span>;
+                  })}
+                </div>
               ) : (
                 <div className="mb-5 flex items-center gap-5 border-t border-white/[0.07] pt-5 text-[12px] text-white/45">
                   <span className="inline-flex items-center gap-1.5">
@@ -197,18 +156,18 @@ function CourseCard({ course, index }: { course: Course; index: number }) {
 
 
 
-              <div className={cn("grid gap-3", ["farmacologia-no-esporte", "portaria-344-98"].includes(course.slug) && "sm:grid-cols-2")}>
-                {["farmacologia-no-esporte", "portaria-344-98"].includes(course.slug) && (
+              <div className={cn("grid gap-3", course.infoUrl && "sm:grid-cols-2")}>
+                {course.infoUrl && (
                   <a
-                    href={course.slug === "farmacologia-no-esporte" ? "/farmacologia-no-esporte.html" : "/portaria-344-98.html"}
+                    href={course.infoUrl}
                     className="flex w-full items-center justify-center gap-2 rounded-full border border-white/15 px-5 py-3.5 text-[13.5px] font-semibold text-white/80 transition-all hover:border-primary/40 hover:bg-white/[0.04]"
                   >
-                    Conhecer o curso
+                    {course.infoButtonText ?? "Conhecer o curso"}
                     <ArrowUpRight className="size-4" />
                   </a>
                 )}
                 <a
-                  href={course.checkoutUrl}
+                  href={course.buttonUrl ?? course.checkoutUrl ?? "#"}
                   data-hotmart={course.slug}
                   className="group/btn bg-primary text-primary-foreground hover:shadow-primary/30 flex w-full items-center justify-center gap-2 rounded-full px-6 py-3.5 text-[13.5px] font-semibold transition-all hover:-translate-y-0.5 hover:shadow-xl"
                 >

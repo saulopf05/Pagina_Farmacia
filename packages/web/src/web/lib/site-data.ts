@@ -5,17 +5,48 @@ export type Course = {
   audience: string;
   description: string;
   highlights: string[];
-  duration: string;
-  lessons: string;
+  duration?: string;
+  lessons?: string;
   image: string;
   featured?: boolean;
-  checkoutUrl: string;
+  checkoutUrl?: string;
   buttonText?: string;
+  buttonUrl?: string;
+  infoUrl?: string;
+  infoButtonText?: string;
+  footerLabel?: string;
+  footerUrl?: string;
+  cardDetails?: { icon: "map" | "book" | "group"; label: string }[];
   infoTitle?: string;
   infoDescription?: string;
 };
 
 export const COURSES: Course[] = [
+  {
+    slug: "mentoria-slls",
+    title: "Mentoria Preparatória para Farmacêuticos",
+    category: "Mentoria",
+    audience: "Farmacêuticos que se preparam para os concursos de Santa Luzia e Lagoa Santa",
+    description: "Organize a preparação para os dois concursos com conteúdos comuns e foco nas particularidades de cada edital.",
+    highlights: [
+      "Preparação integrada para Santa Luzia e Lagoa Santa",
+      "Farmácia, Saúde Pública e disciplinas gerais",
+      "Questões, simulados e suporte em grupo",
+    ],
+    image: "/images/card-slls.png",
+    featured: true,
+    buttonText: "Quero me inscrever",
+    buttonUrl: "/mentoria-slls#investimento",
+    infoUrl: "/mentoria-slls",
+    infoButtonText: "Conhecer a mentoria",
+    footerLabel: "Mentoria SL e LS",
+    footerUrl: "/mentoria-slls",
+    cardDetails: [
+      { icon: "map", label: "2 concursos" },
+      { icon: "book", label: "9 módulos" },
+      { icon: "group", label: "Suporte em grupo" },
+    ],
+  },
   {
     slug: "farmacologia-no-esporte",
     title: "Farmacologia no Esporte",
@@ -33,6 +64,7 @@ export const COURSES: Course[] = [
     image: "/images/curso-farmacologia-esporte.jpg",
     featured: true,
     checkoutUrl: "https://pay.hotmart.com/L92540251K?checkoutMode=10&ref=L93736040J&bid=1792525715438",
+    infoUrl: "/farmacologia-no-esporte/",
   },
   {
     slug: "portaria-344-98",
@@ -51,6 +83,7 @@ export const COURSES: Course[] = [
     image: "/images/curso-portaria-344.jpg",
     featured: true,
     checkoutUrl: "https://go.hotmart.com/C85513387A?ap=c54b",
+    infoUrl: "/portaria-344",
   },
   {
     slug: "pericia-judicial-farmaceuticos",
@@ -67,7 +100,7 @@ export const COURSES: Course[] = [
     duration: "16h",
     lessons: "36 aulas",
     image: "/images/curso-pericia-farmaceuticos.jpg",
-    featured: true,
+    featured: false,
     checkoutUrl: "https://pay.hotmart.com/O95898307D?checkoutMode=10",
     buttonText: "Quero adquirir meu e-book",
     infoTitle: "Material de consulta",
