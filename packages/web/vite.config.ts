@@ -22,6 +22,7 @@ export default defineConfig({
           main: resolve(webDir, "index.html"),
           farmacologiaEsporte: resolve(webDir, "farmacologia-no-esporte.html"),
           portaria344: resolve(webDir, "portaria-344-98.html"),
+          mentoriaSantaLuziaLagoaSanta: resolve(webDir, "mentoria-santa-luzia-lagoa-santa.html"),
         },
       },
     },

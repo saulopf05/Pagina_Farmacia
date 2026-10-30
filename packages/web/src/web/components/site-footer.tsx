@@ -88,6 +88,14 @@ export function SiteFooter({ coursePage = false }: { coursePage?: boolean }) {
                   </a>
                 </li>
               ))}
+              <li>
+                <a
+                  href="/mentoria-santa-luzia-lagoa-santa.html"
+                  className="text-[13.5px] text-white/45 transition-colors hover:text-white"
+                >
+                  Mentoria SL e LS
+                </a>
+              </li>
             </ul>
           </Reveal>
 
